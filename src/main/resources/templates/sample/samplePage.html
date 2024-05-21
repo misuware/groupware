@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Page</title>
+</head>
+<body>
+    <h1>Sample List</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${list == null or #lists.isEmpty(list)}">
+            <td colspan="2">No items found</td>
+        </tr>
+        <tr th:each="item: ${list}">
+            <td th:text="${item.sampleId}">ID</td>
+            <td th:text="${item.sampleNm}">Name</td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

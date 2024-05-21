@@ -1,0 +1,13 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="groupware.sample.service.mapper.SampleMapper">
+
+    <select id="selectSampleList" resultType="groupware.sample.service.vo.SampleVO">
+        SELECT
+            sample_id,
+            sample_nm
+        FROM comn.tb_sample
+    </select>
+
+</mapper>
