@@ -1,0 +1,46 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="groupware.com.usr.mapper.UserMapper">
+    <insert id="insertUser" parameterType="groupware.com.usr.entity.User">
+        insert into comn.userlogin (user_id,
+                                    hashed_password,
+                                    auth_cd)
+        values (#{userId},
+                #{hashedPassword},
+                #{authCd})
+    </insert>
+
+    <insert id="insertUserInfo" parameterType="groupware.com.usr.entity.User">
+        insert into comn.userinfo (user_id,
+                                   user_nm,
+                                   user_dc,
+                                   user_gid)
+        values (#{userId},
+                #{userNm},
+                #{userDc},
+                #{userGid})
+    </insert>
+
+    <select id="selectUser" parameterType="groupware.com.usr.entity.User" resultType="groupware.com.usr.entity.User">
+        select user_id,
+               hashed_password
+        from comn.userlogin u
+        where u.user_id = #{userId}
+    </select>
+
+    <select id="selectUserInfo" parameterType="groupware.com.usr.entity.User" resultType="groupware.com.usr.entity.User">
+        select L.user_id,
+               L.auth_cd,
+               case
+                   when L.auth_cd = 'U' then '일반사용자'
+                   when L.auth_cd = 'A' then '관리자'
+                   end as auth_nm,
+               I.user_nm,
+               I.user_dc,
+               I.user_gid
+        from comn.userlogin L
+                 left join comn.userinfo I on L.user_id = I.user_id
+        where L.user_id = #{userId}
+    </select>
+</mapper>

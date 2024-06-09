@@ -1,0 +1,29 @@
+### 가입
+POST http://localhost:8080/user/signUp
+Content-Type: application/json
+
+{
+  "userId" : "TEST",
+  "userNm": "테스트",
+  "userDc": "테스트 유저",
+  "rawPassword": "TEST12!@",
+  "authCd": "U"
+}
+
+### 로그인
+POST http://localhost:8080/user/signIn
+Content-Type: application/json
+
+{
+  "userId" : "TEST",
+  "rawPassword": "TEST12!@"
+}
+
+### 로그인 실패
+POST localhost:8080/user/signIn
+Content-Type: application/json
+
+{
+  "userId": "TEST",
+  "rawPassword": "wrongpassword"
+}
