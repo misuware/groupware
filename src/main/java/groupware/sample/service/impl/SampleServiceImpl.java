@@ -19,6 +19,8 @@ public class SampleServiceImpl implements SampleService {
     }
     @Override
     public List<SampleVO> selectSampleList() {
-        return sampleMapper.selectSampleList();
+        List<SampleVO> result = sampleMapper.selectSampleList();
+        System.out.println("쿼리 결과: " + result); // 로그 출력
+        return result;
     }
 }
