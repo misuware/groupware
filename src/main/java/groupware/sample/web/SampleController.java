@@ -14,6 +14,11 @@ public class SampleController {
 
     private final SampleService sampleService;
 
+    /**
+     * 샘플 페이지 이동
+     * @param model
+     * @return
+     */
     @GetMapping("/samplePage")
     public String samplePage(Model model) {
         model.addAttribute("list", sampleService.selectSampleList());
